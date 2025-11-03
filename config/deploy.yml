@@ -2,12 +2,12 @@
 service: lab07_danna_collazos
 
 # Name of the container image.
-image: your-user/lab07_danna_collazos
+image: danna-collazo/lab07_danna_collazos
 
 # Deploy to these servers.
 servers:
   web:
-    - 192.168.0.1
+    - 142.93.90.148
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -18,15 +18,14 @@ servers:
 #
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
-  ssl: true
-  host: app.example.com
+  ssl: false
 
 # Credentials for your image host.
 registry:
   # Specify the registry server, if you're not using Docker Hub
   # server: registry.digitalocean.com / ghcr.io / ...
-  username: your-user
-
+  server: registry.digitalocean.com/danna-collazos
+  username: ddcollazos@miuandes.cl
   # Always use an access token rather than real password when possible.
   password:
     - KAMAL_REGISTRY_PASSWORD
@@ -34,7 +33,14 @@ registry:
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 env:
   secret:
+    - KAMAL_REGISTRY_PASSWORD
     - RAILS_MASTER_KEY
+    - PRODUCTION_DB_PASSWORD
+    - PRODUCTION_DB_USERNAME
+    - PRODUCTION_DB_HOST
+    - PRODUCTION_DB_PORT
+    - PRODUCTION_DB_NAME
+
   clear:
     # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
     # When you start using multiple servers, you should split out job processing to a dedicated machine.
@@ -88,8 +94,9 @@ builder:
   #   - RAILS_MASTER_KEY
 
 # Use a different ssh user than root
-# ssh:
-#   user: app
+ssh:
+  user: root
+  keys: ["~/.ssh/id_25519_danna"]
 
 # Use accessory services (secrets come from .kamal/secrets).
 # accessories:

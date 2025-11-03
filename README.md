@@ -48,3 +48,26 @@ This lab consolidates your knowledge of:
   - The IP address where the app can be accessed.
 - Clean repository ready for evaluation.
 
+## Steps
+1. Create digitalocean account
+2. Create droplet inside digitalocean
+3. Create database in digitalocean
+4. Create other databases (cache, cable and queue)
+5. Configure `config/database.yml`
+6. Create image registry inside digitalocean
+7. Add `.env` with necessary information for database connection
+8. Configure deploy.yml
+9. Run `kamal` commands (setup and then deploy)
+
+## Issues
+- I forgot to create all databases for production, I fix this manually creating databases in digitalocean.
+- I can't fix login and signup
+
+## IP Address
+Site can be found at:
+```
+142.93.90.148
+```
+
+
+
